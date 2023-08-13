@@ -37,5 +37,21 @@ namespace WebApp.Core
             sqlConnection.Close();
             return dataTableRes;
         }
+
+        public static int ExecScalar(string sql, List<SqlParameter> sqlPar = null) 
+        {
+            var sqlConnection = GetSqlConection();
+            var getData = new SqlCommand(sql, sqlConnection);
+            if (sqlPar != null)
+            {
+                foreach (var par in sqlPar)
+                {
+                    getData.Parameters.Add(par);
+                }
+            }
+            var results = Convert.ToInt32(getData.ExecuteScalar());
+            sqlConnection.Close();
+            return results;
+        }
     }
 }

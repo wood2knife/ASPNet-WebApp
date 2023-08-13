@@ -10,9 +10,22 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                <asp:Button ID="AddStudentButton" runat="server" OnClick="AddStudent_Click" Text="Add Student" class="btn btn-primary me-md-2" />
-                <asp:Button ID="LogoutButton" runat="server" OnClick="LogOut_Click" Text="Log out" class="btn btn-outline-secondary me-md-4" />
+            <div class="mt-3 d-flex justify-content-between">
+                <div class="">
+                    <nav>
+                          <ul class="pagination">
+                              <asp:Button ID="btnFirstPage" runat="server" OnClick="btnFirstPage_Click" Text="First Page" class="page-link" Enabled="false" />
+                              <asp:Button ID="btnPreviousPage" runat="server" OnClick="btnPreviousPage_Click" Text="Previous Page" class="page-link" Enabled="false" />
+                              <asp:TextBox ID="tbPageNumber" runat="server" class="page-item disabled w-25 text-center" ReadOnly="true"></asp:TextBox>
+                              <asp:Button ID="btnNextPage" runat="server" OnClick="btnNextPage_Click" Text="NextPage" class="page-link" />
+                              <asp:Button ID="btnLastPage" runat="server" OnClick="btnLastPage_Click" Text="Last Page" class="page-link" />
+                          </ul>
+                    </nav>
+                </div>
+                <div class="">
+                    <asp:Button ID="AddStudentButton" runat="server" OnClick="AddStudent_Click" Text="Add Student" class="btn btn-primary me-md-2" />
+                    <asp:Button ID="LogoutButton" runat="server" OnClick="LogOut_Click" Text="Log out" class="btn btn-outline-secondary me-md-4" />
+                </div>
             </div>
             <div>
                 <h2 style="text-align: center">Students List</h2>

@@ -15,6 +15,18 @@ namespace WebApp
     {
 
         private UserSession _curl;
+        private StudentPageClass CurrentPagination
+        {
+            get
+            {
+                if (Session["StudentPageClass"] == null)
+                {
+                    Session["StudentPageClass"] = new StudentPageClass();
+                }
+
+                return (StudentPageClass)Session["StudentPageClass"];
+            }
+        }
         private void Display()
         {
             switch(_curl.Role)
@@ -30,24 +42,34 @@ namespace WebApp
                     break; 
             }
         }
+
+        public void DisplayPage()
+        {
+            DataTable dataTableStudents = CurrentPagination.Students;
+            parentRepeater.DataSource = dataTableStudents;
+            parentRepeater.DataBind();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _curl = UserSession.Current;
             try
             {
                 Display();
-                string getStudentsInfo = @"
-                    SELECT StudentTable.RecordBook, StudentTable.Fam, StudentTable.Name,
-                    StudentTable.Otchestvo, ExamTable.Exam, ExamTable.DateOfExam,
-                    ExamTable.Mark FROM ExamTable INNER JOIN StudentTable ON ExamTable.ExamID=StudentTable.StudentID";
-                DataTable dataTableStudents = DB.GetDataFromDB(getStudentsInfo);
-                parentRepeater.DataSource = dataTableStudents;
-                parentRepeater.DataBind();
             }
             catch (Exception)
             {
             }
         }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            CurrentPagination.getData(CurrentPagination.PageNumber, CurrentPagination.PageSize);
+            tbPageNumber.Text = CurrentPagination.PageNumber.ToString();
+            PaginationRules();
+            DisplayPage();
+        }
+
         protected void AddStudent_Click(object sender, EventArgs e)
         {
             string url = "AddStudentPage.aspx";
@@ -59,6 +81,51 @@ namespace WebApp
         {
             Response.Redirect("Login.aspx");
             _curl = null;
+            Session["StudentPageClass"] = null;
+        }
+
+        public void PaginationRules()
+        {
+            if (CurrentPagination.PageNumber == 1)
+            {
+                btnFirstPage.Enabled = false;
+                btnPreviousPage.Enabled = false;
+                btnNextPage.Enabled = true;
+                btnLastPage.Enabled = true;
+            }
+            if (CurrentPagination.PageNumber == CurrentPagination.AmountOfPages)
+            {
+                btnFirstPage.Enabled = true;
+                btnPreviousPage.Enabled = true;
+                btnNextPage.Enabled = false;
+                btnLastPage.Enabled = false;
+            }
+        }
+
+        protected void btnFirstPage_Click(object sender, EventArgs e)
+        {
+            PaginationRules();
+            CurrentPagination.PageNumber = 1;
+        }
+
+        protected void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            PaginationRules();
+            if (CurrentPagination.PageNumber != 1)
+                CurrentPagination.PageNumber -= 1;
+        }
+
+        protected void btnNextPage_Click(object sender, EventArgs e)
+        {
+            PaginationRules();
+            if (CurrentPagination.PageNumber != CurrentPagination.AmountOfPages)
+                CurrentPagination.PageNumber += 1;
+        }
+
+        protected void btnLastPage_Click(object sender, EventArgs e)
+        {
+            PaginationRules();
+            CurrentPagination.PageNumber = CurrentPagination.AmountOfPages;
         }
     }
 }
