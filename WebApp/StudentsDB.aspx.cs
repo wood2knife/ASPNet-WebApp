@@ -105,6 +105,7 @@ namespace WebApp
         protected void btnFirstPage_Click(object sender, EventArgs e)
         {
             PaginationRules();
+
             CurrentPagination.PageNumber = 1;
         }
 
