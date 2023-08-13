@@ -13,13 +13,13 @@
             <div class="mt-3 d-flex justify-content-between">
                 <div class="">
                     <nav>
-                          <ul class="pagination">
-                              <asp:Button ID="btnFirstPage" runat="server" OnClick="btnFirstPage_Click" Text="First Page" class="page-link" Enabled="false" />
-                              <asp:Button ID="btnPreviousPage" runat="server" OnClick="btnPreviousPage_Click" Text="Previous Page" class="page-link" Enabled="false" />
-                              <asp:TextBox ID="tbPageNumber" runat="server" class="page-item disabled w-25 text-center" ReadOnly="true"></asp:TextBox>
-                              <asp:Button ID="btnNextPage" runat="server" OnClick="btnNextPage_Click" Text="NextPage" class="page-link" />
-                              <asp:Button ID="btnLastPage" runat="server" OnClick="btnLastPage_Click" Text="Last Page" class="page-link" />
-                          </ul>
+                        <ul class="pagination">
+                            <asp:Button ID="btnFirstPage" runat="server" OnClick="btnFirstPage_Click" Text="First Page" class="page-link" Enabled="false" />
+                            <asp:Button ID="btnPreviousPage" runat="server" OnClick="btnPreviousPage_Click" Text="Previous Page" class="page-link" Enabled="false" />
+                            <asp:TextBox ID="tbPageNumber" runat="server" class="page-item disabled w-25 text-center" ReadOnly="true"></asp:TextBox>
+                            <asp:Button ID="btnNextPage" runat="server" OnClick="btnNextPage_Click" Text="NextPage" class="page-link" />
+                            <asp:Button ID="btnLastPage" runat="server" OnClick="btnLastPage_Click" Text="Last Page" class="page-link" />
+                        </ul>
                     </nav>
                 </div>
                 <div class="">
