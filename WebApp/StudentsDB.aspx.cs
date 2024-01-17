@@ -127,5 +127,11 @@ namespace WebApp
             PaginationRules();
             CurrentPagination.PageNumber = CurrentPagination.AmountOfPages;
         }
+
+        protected void ddlShowAmountOfStudent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var pageSize = int.Parse(ddlShowAmountOfStudent.SelectedItem.Text);
+            CurrentPagination.getData(1, pageSize);
+        }
     }
 }

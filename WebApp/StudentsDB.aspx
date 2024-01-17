@@ -23,6 +23,13 @@
                     </nav>
                 </div>
                 <div class="">
+                    <asp:DropDownList ID="ddlShowAmountOfStudent" autopostback="true" runat="server" onselectedindexchanged="ddlShowAmountOfStudent_SelectedIndexChanged"
+                        class="btn btn-light btn-outline-dark btn-sm">
+                        <asp:ListItem Text="10" Value="10"/>
+                        <asp:ListItem Text="20" Value="20"/>
+                        <asp:ListItem Text="30" Value="30"/>
+                        <asp:ListItem Text="50" Value="50"/>
+                    </asp:DropDownList>
                     <asp:Button ID="AddStudentButton" runat="server" OnClick="AddStudent_Click" Text="Add Student" class="btn btn-primary me-md-2" />
                     <asp:Button ID="LogoutButton" runat="server" OnClick="LogOut_Click" Text="Log out" class="btn btn-outline-secondary me-md-4" />
                 </div>

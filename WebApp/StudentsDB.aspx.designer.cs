@@ -69,6 +69,15 @@ namespace WebApp
         protected global::System.Web.UI.WebControls.Button btnLastPage;
 
         /// <summary>
+        /// ddlShowAmountOfStudent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowAmountOfStudent;
+
+        /// <summary>
         /// AddStudentButton control.
         /// </summary>
         /// <remarks>

@@ -14,7 +14,7 @@
                 <table>
                     <tr>
                         <td colspan="8" style="text-align: center">
-                            <asp:Label ID="LoginHeader" runat="server" Font-Size="X-Large" Text="Login"></asp:Label>
+                            <asp:Label ID="LoginHeader" runat="server" Font-Size="X-Large" Text="University login page"></asp:Label>
                         </td>
                     </tr>
                     <tr>
