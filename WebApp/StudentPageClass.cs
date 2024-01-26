@@ -59,16 +59,12 @@ FETCH NEXT {PageSize} ROWS ONLY ");
             AmountOfPages = TotalRows / PageSize + 1;
         }
 
-        public bool deleteStudentInfo(int studentId)
+        public void deleteStudentInfo(int studentId)
         {
             var deleteStudentSql = $@"
 delete from StudentTable
 where StudentID = {studentId};";
             var execSql = DB.ExecScalar(deleteStudentSql);
-            if (execSql != -1)
-                return true;
-            else
-                return false;
         }
     }
 }
