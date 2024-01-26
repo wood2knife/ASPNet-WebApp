@@ -64,7 +64,8 @@ FETCH NEXT {PageSize} ROWS ONLY ");
             var deleteStudentSql = $@"
 delete from StudentTable
 where StudentID = {studentId};";
-            var execSql = DB.ExecScalar(deleteStudentSql);
+            if (studentId > 0)
+                DB.ExecScalar(deleteStudentSql);
         }
     }
 }
