@@ -17,6 +17,7 @@ namespace WebApp
 
         private string mainSql = @"
 SELECT 
+StudentTable.StudentID,
 StudentTable.RecordBook, 
 StudentTable.Fam, 
 StudentTable.Name,
@@ -30,6 +31,7 @@ ON ExamTable.ExamID=StudentTable.StudentID
 %ORDER%
 %OFFSET%
 ";
+
         private string amoutOfStudents = @"
 SELECT 
 COUNT(*)
@@ -55,6 +57,18 @@ FETCH NEXT {PageSize} ROWS ONLY ");
             Students = DB.GetDataFromDB(sql);
             TotalRows = DB.ExecScalar(amoutOfStudents);
             AmountOfPages = TotalRows / PageSize + 1;
+        }
+
+        public bool deleteStudentInfo(int studentId)
+        {
+            var deleteStudentSql = $@"
+delete from StudentTable
+where StudentID = {studentId};";
+            var execSql = DB.ExecScalar(deleteStudentSql);
+            if (execSql != -1)
+                return true;
+            else
+                return false;
         }
     }
 }

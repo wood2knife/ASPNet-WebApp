@@ -133,5 +133,16 @@ namespace WebApp
             var pageSize = int.Parse(ddlShowAmountOfStudent.SelectedItem.Text);
             CurrentPagination.getData(1, pageSize);
         }
+
+        protected void btnEdit_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void btnDel_Click(object sender, ImageClickEventArgs e)
+        {
+            var deleteStudentId = ((ImageButton)sender).CommandArgument;
+            CurrentPagination.deleteStudentInfo(int.Parse(deleteStudentId));
+        }
     }
 }

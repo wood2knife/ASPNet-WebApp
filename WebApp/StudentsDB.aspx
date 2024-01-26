@@ -41,17 +41,22 @@
                 <HeaderTemplate>
                     <table class="table table-hover table-bordered table-light" style="text-align: center">
                         <tr class="table-primary">
+                            <th></th>
                             <th>Student Record Book</th>
                             <th>Student Surname</th>
                             <th>Student Name</th>
                             <th>Student Otchestvo</th>
-                            <th>Exam Name</th>
-                            <th>Date</th>
+                            <th>Exam</th>
+                            <th>Exam Date</th>
                             <th>Mark</th>
+                            <th></th>
                         </tr>
                 </HeaderTemplate>
                 <ItemTemplate>
                     <tr>
+                        <td>
+                            <asp:ImageButton ID="btnEdit" runat="server" ImageUrl="images/editButton.png" Width="30px" OnClick="btnEdit_Click" CommandArgument='<%# Eval("StudentID") %>'/>
+                        </td>
                         <td>
                             <asp:Label ID="lblStudentID" runat="server" Text='<%# Eval("RecordBook") %>' />
                         </td>
@@ -72,6 +77,9 @@
                         </td>
                         <td>
                             <asp:Label ID="lblExamMark" runat="server" Text='<%# Eval("Mark") %>' />
+                        </td>
+                        <td>
+                            <asp:ImageButton ID="btnDel" runat="server" ImageUrl="images/deleteButton.png" Width="30px" OnClick="btnDel_Click" CommandArgument='<%# Eval("StudentID") %>'/>
                         </td>
                     </tr>
                 </ItemTemplate>
