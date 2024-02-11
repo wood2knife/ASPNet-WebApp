@@ -56,7 +56,7 @@ OFFSET {PageNumber - 1} * {PageSize} ROWS
 FETCH NEXT {PageSize} ROWS ONLY ");
             Students = DB.GetDataFromDB(sql);
             TotalRows = DB.ExecScalar(amoutOfStudents);
-            AmountOfPages = TotalRows / PageSize + 1;
+            AmountOfPages = TotalRows % PageSize == 0 ? TotalRows / PageSize : TotalRows / PageSize + 1;
         }
 
         public void deleteStudentInfo(int studentId)
